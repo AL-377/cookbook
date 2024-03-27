@@ -21,7 +21,7 @@ import chainlit as cl
 api_key = os.environ.get("OPENAI_API_KEY")
 client = AsyncOpenAI(api_key=api_key)
 assistant_id = os.environ.get("ASSISTANT_ID")
-
+user_name = os.environ.get("USER_NAME")
 # List of allowed mime types
 allowed_mime = ["text/csv", "application/pdf"]
 
@@ -153,7 +153,7 @@ async def start_chat():
     cl.user_session.set("thread", thread)
     await cl.Message(
         author="assistant",
-        content="Ask me math or weather questions!",
+        content=f"Hello,{user_name}.What can I do for you today?",
         disable_feedback=True,
     ).send()
 
